@@ -47,7 +47,7 @@ const Contacts = () => {
         </div>
       ) : (
         <ListGroup>
-          {Objects.entries(contacts).map(([key, value]) => (
+          {Object.entries(contacts).map(([key, value]) => (
             <ListGroupItem key={key}>
               <Contact contact={value} cpntactKey={key} />
             </ListGroupItem>

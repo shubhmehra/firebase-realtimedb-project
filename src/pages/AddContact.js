@@ -78,7 +78,7 @@ const AddContact = () => {
       var metadata = {
         contentType: file.type,
       };
-      let resizezImage = await readAndCompressImage(file, imageConfig);
+      let resizedImage = await readAndCompressImage(file, imageConfig);
 
       const storageRef = await firebase.storage().ref();
       var uploadTask = storageRef
@@ -117,7 +117,7 @@ const AddContact = () => {
         () => {
           //TODO: check method download
           uploadTask.snapshot.ref
-            .downloadUrl()
+            .getDownloadURL()
             .then((downloadUrl) => {
               setDownloadUrl(downloadUrl);
             })

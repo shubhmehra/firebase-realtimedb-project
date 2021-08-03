@@ -8,7 +8,7 @@ import { FaRegStar, FaStar } from "react-icons/fa";
 import { MdDelete, MdEdit } from "react-icons/md";
 
 //TODO: add firebase
-import { firebase } from "firebase/app";
+import firebase from "firebase/app";
 
 // context stuffs
 //TODO: import context and action: update and single_contact
@@ -21,7 +21,7 @@ import { toast } from "react-toastify";
 
 const Contact = ({ contact, contactKey }) => {
   //TODO: destructuring dispatch from the context
-
+  const { state, dispatch } = useContext(ContactContext);
   // history hooks to get history
   const history = useHistory();
 
@@ -42,7 +42,7 @@ const Contact = ({ contact, contactKey }) => {
   const updateImpContact = () => {
     //TODO: update (star) contact, use contactKey
     firebase
-      .data()
+      .database()
       .ref(`/contacts/${contactKey}`)
       .update({ star: !contact.star }, (err) => console.log(err))
       .then(() => {
